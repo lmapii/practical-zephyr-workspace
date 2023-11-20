@@ -1,0 +1,5 @@
+{
+  // The "build" and "deps" folders are quite important so it is
+  // annoying that vscode excludes them by default according to .gitignore
+  "search.useIgnoreFiles": false
+}
