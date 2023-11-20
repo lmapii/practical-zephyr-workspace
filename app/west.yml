@@ -5,7 +5,7 @@ manifest:
   # `self` defines whatever is only relevant for this manifest file
   # e.g., if we'd like to move the entire repository into a subfolder, we could do this:
   self:
-    path: src
+    path: .
 
   projects:
     # the project name is used as directory name, but considers the given `path-prefix`
