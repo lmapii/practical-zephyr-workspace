@@ -4,8 +4,11 @@ manifest:
 
   # `self` defines whatever is only relevant for this manifest file
   # e.g., if we'd like to move the entire repository into a subfolder, we could do this:
-  self:
-    path: .
+  # self:
+  #   path: src
+  # in fact, if we'd try to initialize the west workspace using the repository as remote,
+  # then the `app` folder would have the repository's name. You can override this with the
+  # given path option.
 
   projects:
     # the project name is used as directory name, but considers the given `path-prefix`
