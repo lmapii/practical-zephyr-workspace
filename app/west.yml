@@ -2,7 +2,7 @@ manifest:
   # minimum west version
   version: 0.8
 
-  # `self` defines whatever is only relevant for this manifest file
+  # `self` defines whatever is only relevant for the manifest repository
   # e.g., if we'd like to move the entire repository into a subfolder, we could do this:
   # self:
   #   path: src

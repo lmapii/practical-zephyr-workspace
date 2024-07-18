@@ -7,7 +7,8 @@ The goal of this repository is to have a single repository for your application.
 
 ```bash
 $ git clone -this-repository- .
-$ PIPENV_VENV_IN_PROJECT=1 pipenv install --dev && pipenv shell
+$ PIPENV_VENV_IN_PROJECT=1 pipenv install --dev
+$ pipenv shell
 $ west init --local app
 $ west update
 

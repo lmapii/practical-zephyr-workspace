@@ -46,34 +46,12 @@ void main(void)
     int err   = 0;
     bool tick = true;
 
-    /*
-     * While devicetree macros are quite straightforward, for runtime functions such as
-     * `gpio_is_ready_dt` the connection to the devicetree is sometimes harder to understand.
-     *
-     * The GPIO subsystem is an instance based device driver. Such drivers use a fixed driver
-     * model, explained in https://docs.zephyrproject.org/latest/kernel/drivers/index.html.
-     * E.g., in `zephyr/drivers/gpio/gpio_nrfx.c`, currently at the very end of the file, you'll
-     * find the following macro:
-     *
-     * `DT_INST_FOREACH_STATUS_OKAY(GPIO_NRF_DEVICE)`
-     *
-     * This macro ends up declaring instances `__device_dts_ord_<nn>` (and others) for each node
-     * with the compatible property set to "nordic,nrf-gpio" and the status "okay". For "gpio.h",
-     * the function `gpio_is_ready_dt` in the end simply calls `z_device_is_ready` with
-     * `spec->port`, which determines whether or not the device is ready as follows:
-     *
-     * `return dev->state->initialized && (dev->state->init_res == 0U);`
-     *
-     * As you can see, the function does not access any `status` field of the device.
-     * Thus, using `is_ready_dt` is generally not equivalent to checking the node's status.
-     */
     if (!gpio_is_ready_dt(&led))
     {
         printk("Error: LED pin is not available.\n");
         return;
     }
 
-    // TODO: MEMFAULT_ASSERT?
     err = gpio_pin_configure_dt(&led, GPIO_OUTPUT_ACTIVE);
     if (err != 0)
     {
